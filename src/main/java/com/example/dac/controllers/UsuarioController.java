@@ -81,9 +81,9 @@ public class UsuarioController {
             @ApiResponse(code = 403, message = "Proibido acesso"),
             @ApiResponse(code = 404, message = "Não encontrado")
     })
-    public ResponseEntity<?> editarUsuario(@PathVariable("usuarioId") @ApiParam(required = true, value = "ID do usuario") Long usuarioId, @PathVariable("atividades") @ApiParam(value = "IDs das atividades favoritas do usuario") long[] atividades, @RequestBody Usuario usuarioEditado) {
+    public ResponseEntity<?> editarUsuario(@PathVariable("usuarioId") @ApiParam(required = true, value = "ID do usuario") Long usuarioId, @PathVariable("atividades") @ApiParam(value = "IDs das atividades favoritas do usuario") Long[] atividades, @RequestBody Usuario usuarioEditado) {
         ArrayList<Atividade> listaAtividades = new ArrayList<Atividade>();
-        for (long atividadeId : atividades) {
+        for (Long atividadeId : atividades) {
             if (!atividadeRepository.existsById(atividadeId)){
                 return ResponseEntity.ok("Id de atividade inexistente!");
             }

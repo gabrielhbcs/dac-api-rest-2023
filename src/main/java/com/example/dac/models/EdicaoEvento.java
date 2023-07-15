@@ -38,7 +38,7 @@ public class EdicaoEvento {
     @JoinColumn(name="edicao_evento_id", referencedColumnName="id")
     @JsonIgnore
     private List<Atividade> atividades;
-
+    
     public Long getId() {
         return id;
     }
@@ -80,6 +80,18 @@ public class EdicaoEvento {
     }
     public void setEvento(Evento evento) {
         this.evento = evento;
+    }
+    public Usuario getUsuario() {
+        return usuario;
+    }
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+    public List<Atividade> getAtividades() {
+        return atividades;
+    }
+    public void setAtividades(List<Atividade> atividades) {
+        this.atividades = atividades;
     }
 }
 

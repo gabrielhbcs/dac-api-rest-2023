@@ -125,7 +125,7 @@ public class AtividadeController {
     }
 
     @DeleteMapping("/{atividadeId}")
-    @ApiOperation(value = "Deletar atividade no banco", notes = "Deleta atividade do banco de dados caso o ID exista")
+    @ApiOperation(value = "Deletar atividade do banco", notes = "Deleta atividade do banco de dados caso o ID exista")
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Atividade deletada"),
             @ApiResponse(code = 401, message = "Acesso não autorizado"),
