@@ -1,11 +1,15 @@
 package com.example.dac.models;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -26,6 +30,14 @@ public class EdicaoEvento {
     @JoinColumn(name = "evento_id", referencedColumnName = "id")
     @JsonIgnore
     private Evento evento;
+    @ManyToOne
+    @JoinColumn(name = "usuario_id", referencedColumnName = "id")
+    @JsonIgnore
+    private Usuario usuario;
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name="edicao_evento_id", referencedColumnName="id")
+    @JsonIgnore
+    private List<Atividade> atividades;
 
     public Long getId() {
         return id;

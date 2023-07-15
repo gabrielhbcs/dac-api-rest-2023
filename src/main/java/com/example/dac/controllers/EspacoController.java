@@ -13,6 +13,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.dac.models.Espaco;
 import com.example.dac.repositories.EspacoRepository;
 
+import io.swagger.annotations.Api;
+
+@Api(tags = { "Espaços" }, description = "Espaços para realização de atividades")
 @RestController
 @RequestMapping("/espacos")
 public class EspacoController {

@@ -19,7 +19,6 @@ public class Espaco {
     private String localizacao;
     private int capacidade;
     private String recursosDisponiveis;
-
     public Long getId() {
         return id;
     }

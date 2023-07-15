@@ -1,6 +1,8 @@
 package com.example.dac.controllers;
 
-import java.time.LocalDate;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -17,6 +19,9 @@ import com.example.dac.models.Evento;
 import com.example.dac.repositories.EdicaoEventoRepository;
 import com.example.dac.repositories.EventoRepository;
 
+import io.swagger.annotations.Api;
+
+@Api(tags = { "Eventos" }, description = "Eventos e suas Edições")
 @RestController
 @RequestMapping("/eventos")
 public class EventoController {
@@ -29,10 +34,17 @@ public class EventoController {
     }
 
     private boolean datasValidas(String dataInicial, String dataFinal) {
-        LocalDate localDateInicial = LocalDate.parse(dataInicial);
-        LocalDate localDateFinal = LocalDate.parse(dataFinal);
+        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy HH:mm");
 
-        return !localDateFinal.isBefore(localDateInicial);
+        try {
+            Date localDateInicial = format.parse(dataInicial);
+            Date localDateFinal = format.parse(dataFinal);
+            return !localDateFinal.before(localDateInicial);
+        } catch (ParseException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return false;
     }
 
     @PostMapping
